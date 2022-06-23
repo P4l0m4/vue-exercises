@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import '~ress/dist/ress.min.css';
+
+$tablet-screen: 768px;
+$desktop-screen: 1024px;
+$border-radius: 8px;
+
+html {
+  scroll-behavior: smooth;
+font-family: "Poppins", sans-serif;
+}
+.gNav {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+}
+.gMain {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 16px;
+  gap: 16px;
+  width: 100vw;
+
+  @media (min-width: $tablet-screen) {
+    padding: 24px;
+    gap: 24px;
+  }
+}
+.gArticle {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+
+  @media (min-width: $tablet-screen) {
+    flex-direction: row;
+  }
+}
+.gContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: $tablet-screen) {
+    padding: 24px;
+    gap: 24px;
+    flex-direction: row;
+  }
+}
+.gContainerColumn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: $tablet-screen) {
+    gap: 24px;
+  }
+}
+.gForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: clamp(304px, 100%, 400px);
+  text-align: right;
+  padding: 16px;
+  background-color: whitesmoke;
+  border-radius: $border-radius;
+
+  @media (min-width: $tablet-screen) {
+    padding: 24px;
+  }
+
+  .gFormSubContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+  }
+
+  .gInput {
+    height: 40px;
+    width: 100%;
+    border-radius: $border-radius;
+    resize: none;
+    padding: 0 4px;
+    border: 1px solid lightgray;
+
+    &:focus {
+      border: 1px solid black;
+      outline: none;
+    }
+  }
+}
+
+.gButton {
+  height: 40px;
+  padding: 8px 32px;
+  width: clamp(100%, 100%, 400px);
+  border-radius: $border-radius;
+  box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, 0.2);
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    background-color: lightgrey;
+  }
+}
+.gLink {
+  text-decoration: none;
+  color: black;
+}
+.router-link-exact-active {
+  text-decoration: underline;
+}
+//SCROLLBAR
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: whitesmoke;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: darkgray;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
