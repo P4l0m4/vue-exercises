@@ -8,7 +8,3 @@
     <router-view />
   </div>
 </template>
-
-<style lang="scss" src="@/global.scss">
-@import url("@/global.scss");
-</style>
