@@ -1,6 +1,6 @@
 <template>
   <article class="gArticle">
-    <form class="gForm" @submit.prevent="submit">
+    <form class="gForm" ref="form" @submit.prevent="submit">
       <div :class="{ 'form-group--error': $v.name.$error }">
         <div class="gFormSubContainer">
           <label class="form__label">Name</label>
@@ -59,6 +59,8 @@ import {
   maxLength,
   email,
 } from "vuelidate/lib/validators";
+import emailjs from "@emailjs/browser";
+
 export default {
   name: "VuelidateForm",
   data() {
@@ -82,21 +84,53 @@ export default {
       email,
     },
   },
+
   methods: {
     submit() {
-      console.log("submit!");
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-        // do your submit logic here
         this.submitStatus = "PENDING";
-
-        setTimeout(() => {
-          this.submitStatus = "OK";
-        }, 500);
+        emailjs
+          .sendForm(
+            "service_f0ns79q",
+            "template_wj3e9hd",
+            this.$refs.form,
+            "ZAG2PeOHvH8fTwjpW"
+          )
+          .then(() => {
+            this.submitStatus = "OK";
+          })
+          .catch((error) => {
+            console.log("FAILED...", error.text);
+          });
       }
     },
   },
+
+  //   methods: {
+  //     async submit() {
+  //       console.log("submit!");
+  //       this.$v.$touch();
+  //       if (this.$v.$invalid) {
+  //         this.submitStatus = "ERROR";
+  //       } else {
+  //         this.submitStatus = "PENDING";
+  //         try {
+  //           const result = await emailjs.sendForm(
+  //             "service_f0ns79q",
+  //             "template_wj3e9hd",
+  //             this.$refs.form,
+  //             "ZAG2PeOHvH8fTwjpW"
+  //           );
+  //           console.log("SUCCESS!", result.text);
+  //           this.submitStatus = "OK";
+  //         } catch (error) {
+  //           console.log("FAILED...", error.text);
+  //         }
+  //       }
+  //     },
+  //   },
 };
 </script>
