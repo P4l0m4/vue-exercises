@@ -6,8 +6,9 @@
           <label class="form__label">Name</label>
           <input
             class="gInput"
+            name="name"
             placeholder="Paloma"
-            v-model.trim="$v.name.$model"
+            v-model.trim="name"
           />
         </div>
       </div>
@@ -24,7 +25,8 @@
           <input
             class="gInput"
             placeholder="palomatejeda81@gmail.com"
-            v-model.trim="$v.mail.$model"
+            v-model.trim="mail"
+            name="email"
           />
         </div>
       </div>

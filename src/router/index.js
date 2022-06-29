@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import TestView from "../views/TestView.vue";
+import ScrollView from "../views/ScrollView.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/test",
     name: "test",
     component: TestView,
+  },
+  {
+    path: "/scroll",
+    name: "scroll",
+    component: ScrollView,
   },
   {
     path: "/about",
@@ -31,6 +37,14 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        // , offset: { x: 0, y: 10 }
+      };
+    }
+  },
 });
 
 export default router;
